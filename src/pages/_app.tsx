@@ -1,11 +1,22 @@
-import { AppProps } from 'next/app';
+import '../styles/global.scss';
 
-import '../styles/global.css';
+import { Header } from '../components/Header';
+import { Player } from '../components/Player';
 
-function MyApp({ Component, pageProps }: AppProps) {
- 
+import styles from '../styles/app.module.scss';
+import { PlayerContextProvider } from '../contexts/PlayerContext';
+
+function MyApp({ Component, pageProps }) {
   return (
+    <PlayerContextProvider>
+      <div className={styles.wrapper}>
+      <main>
+        <Header/>
         <Component {...pageProps} />
+      </main>
+      <Player />
+      </div>
+    </PlayerContextProvider>
   )
 }
 
